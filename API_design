@@ -1,0 +1,562 @@
+_type: export
+__export_format: 4
+__export_date: 2022-07-20T18:52:29.879Z
+__export_source: insomnia.desktop.app:v2022.4.2
+resources:
+  - _id: req_74c04f84d9e94b1ea7f470d555656f31
+    parentId: wrk_4182f84233f24032aa3f317a4f200979
+    modified: 1658142938004
+    created: 1658142938004
+    url: ""
+    name: New Request
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1658142938004
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_4182f84233f24032aa3f317a4f200979
+    parentId: null
+    modified: 1658142937966
+    created: 1658142937966
+    name: New Document
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: env_5ebf224e81b67c6c0a9bf6e784d914dcab2c81b0
+    parentId: wrk_4182f84233f24032aa3f317a4f200979
+    modified: 1658142937993
+    created: 1658142937993
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1658142937994
+    _type: environment
+  - _id: jar_5ebf224e81b67c6c0a9bf6e784d914dcab2c81b0
+    parentId: wrk_4182f84233f24032aa3f317a4f200979
+    modified: 1658142937998
+    created: 1658142937998
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_097e6ceb71b544f78d5d5ab75b3bf026
+    parentId: wrk_4182f84233f24032aa3f317a4f200979
+    modified: 1658343068208
+    created: 1658142937986
+    fileName: New Document
+    contents: |-
+      openapi: 3.0.0
+      info:
+        title: Tracker and Logs API
+        version: 1.0.0
+        description: 
+          <h2> API for Quantified Self Application</h2>
+          <h2>Error Codes</h2>
+          <table>
+            <thead>
+              <th> Resource </th>
+              <th>Error code</th>
+              <th>Message</th>
+            </thead>
+            <tbody>
+            <tr>
+              <td>ShadowManager</td>
+              <td>SM1001</td>
+              <td>shadow_name is required</td>
+            </tr>
+            <tr>
+              <td>ShadowManager</td>
+              <td>SM1002</td>
+              <td>about is required</td>
+            </tr>
+            <tr>
+              <td>ShadowManager</td>
+              <td>SM1003</td>
+              <td>shadow_type is required</td>
+            </tr>
+            <tr>
+              <td>Logs</td>
+              <td>LG1001</td>
+              <td>value is required</td>
+            </tr>
+            <tr>
+              <td>Logs</td>
+              <td>LG1002</td>
+              <td>note is required</td>
+            </tr>
+            </tbody>
+          </table>
+            
+      servers:
+        - url: http://192.168.26.94:5000/  
+      paths:
+        /api/ShadowManager/{user_id}/{shadow_id}:
+          description: >-
+            End point to read, update and delete a ShadowManager resource.
+          get:
+            tags: 
+            - "ShadowManagement"
+            summary: "Find tracker by user_id and shadow_name"
+            description: operation to get tracker detailes.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 2
+            responses:
+              '200':
+                description: Success
+                content:
+                  application/json:
+                    schema:
+                      title: ShadowManagement object
+                      type: object
+                      properties:
+                        user_id: 
+                          type: integer
+                          example: 1
+                        shadow_id:
+                          type: integer
+                          example: 2
+                        shadow_name:
+                          type: string
+                          example: Running
+                        about:
+                          type: string
+                          example: about
+                        shadow_type:
+                          type: string
+                          example: Numerical
+                        last_seen:
+                          type: string 
+                          example: 2022-07-15 11:18:52.066323 
+              '400':
+                description: Bad request.
+              '404':
+                description: Resource not found.
+              '500':
+                description: Internal Server Error.
+          
+          put:
+            tags: 
+              - "ShadowManagement"
+            summary: "Update tracker"
+            description: operation to update tracker detailes.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 2    
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      shadow_name:
+                        type: string
+                        example: Running
+                      about:
+                        type: string                     
+                        example: about
+                      shadow_type:
+                        type: string
+                        example: Numerical
+            responses:
+              '200':
+                 description: Success
+                 content:
+                   application/json:
+                     schema:
+                       title: ShadowManagement object
+                       type: object
+                       properties:
+                         user_id: 
+                           type: integer
+                           example: 1
+                         shadow_id:
+                           type: integer
+                           example: 2
+                         shadow_name:
+                           type: string
+                           example: Running
+                         about:
+                           type: string
+                           example: about
+                         shadow_type:
+                           type: string
+                           example: Numerical
+                         last_seen:
+                           type: string 
+                           example: 2022-07-15 11:18:52.066323 
+              '400':
+                 description: Bad request.
+                 content:
+                   application/json:
+                     schema:
+                       type: object
+                       properties:
+                         error_code:
+                            type: string
+                         error_message:
+                           type: string
+                
+              '404':
+                 description: Resource you requested to update not found.
+              '500':
+                 description: Internal Server Error.
+          delete:
+            tags: 
+            - "ShadowManagement"
+            summary: "Delete tracker"
+            description: operation to delete tracker.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1     
+            responses:
+              '200':
+                description: Successfully Deleted.
+              '400':
+                description: Bad request.
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        error_code:
+                          type: string
+                        error_message:
+                          type: string
+              '404':
+                description: Tracker does not exist.
+              '500':
+                 description: Internal Server Error.
+        /api/ShadowManager/{user_id}:
+          post:
+            tags: 
+            - "ShadowManagement"
+            summary: "Add new tracker"
+            description: Operation to create tracker.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1     
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    title: ShadowManagement object
+                    type: object
+                    properties:
+                      shadow_name:
+                        type: string
+                        example: Running
+                      about:
+                        type: string
+                        example: about
+                      shadow_type:
+                        type: string
+                        example: Numerical
+            responses:
+              '201':
+                description: Successfully created
+              '400':
+                description: Bad request.
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        error_code:
+                          type: string
+                        error_message:
+                          type: string
+              '409':
+                description: Tracker already exist.
+              '500':
+                description: Internal Server Error
+                        
+             
+
+
+        /api/Logs/{user_id}/{shadow_id}/{log_id}:
+          description: >-
+            End point to read, update and delete a Logs resource.
+          get:
+            tags: 
+            - "Logs"
+            summary: "Find log by log_id"
+            description: operation to get log detailes.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 2
+              -  in: path
+                 name: log_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 3
+            responses:
+              '200':
+                description: Success
+                content:
+                  application/json:
+                    schema:
+                      title: Logs object
+                      type: object
+                      properties:
+                        user_id: 
+                          type: integer
+                          example: 1
+                        shadow_id:
+                          type: integer
+                          example: 2
+                        log_id:
+                          type: integer
+                          example: 3
+                        time:
+                          type: string
+                          example: 2022-07-15 12:37:41.672355
+                        value:
+                          type: string
+                          example: value
+                        note:
+                          type: string
+                          example: note
+                        
+              '400':
+                description: Bad request.
+              '404':
+                description: Resource not found.
+              '500':
+                description: Internal Server Error.
+          
+          put:
+            tags: 
+              - "Logs"
+            summary: "Update logs"
+            description: operation to update  log.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 2
+              -  in: path
+                 name: log_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 3
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        example: value
+                      note:
+                        type: string                     
+                        example: note
+                      
+            responses:
+              '200':
+                 description: Success
+                 content:
+                   application/json:
+                     schema:
+                       title: Logs object
+                       type: object
+                       properties:
+                         user_id: 
+                           type: integer
+                           example: 1
+                         shadow_id:
+                           type: integer
+                           example: 2
+                         log_id:
+                           type: integer
+                           example: 3
+                         time:
+                           type: string
+                           example: 2022-07-15 11:18:52.066323 
+                         value:
+                           type: string
+                           example: value
+                         note:
+                           type: string 
+                           example: note
+              '400':
+                 description: Bad request.
+                 content:
+                   application/json:
+                     schema:
+                       type: object
+                       properties:
+                         error_code:
+                            type: string
+                         error_message:
+                           type: string
+                
+              '404':
+                 description: Resource you requested to update not found.
+              '500':
+                 description: Internal Server Error.
+          delete:
+            tags: 
+            - "Logs"
+            summary: "Delete log"
+            description: operation to delete log.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 2
+              -  in: path
+                 name: log_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 3
+            responses:
+              '200':
+                description: Successfully Deleted.
+              '400':
+                description: Bad request.
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        error_code:
+                          type: string
+                        error_message:
+                          type: string
+              '404':
+                description: Log does not exist.
+              '500':
+                 description: Internal Server Error.
+        /api/Logs/{user_id}/{shadow_id}:
+          description: End point to add log.
+          post:
+            tags: 
+            - "Logs"
+            summary: "Add new log"
+            description: Operation to create new log.
+            parameters: 
+              -  in: path
+                 name: user_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 1
+              -  in: path
+                 name: shadow_id
+                 required: True
+                 schema:
+                   type: integer
+                   example: 2
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    title: Logs object
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        example: value
+                      note:
+                        type: string
+                        example: note
+            responses:
+              '201':
+                description: Successfully created
+              '400':
+                description: Bad request.
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        error_code:
+                          type: string
+                        error_message:
+                          type: string
+              '500':
+                description: Internal Server Error
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_6f43c74ced5f4e3fbb4d4442fa9457ec
+    parentId: wrk_4182f84233f24032aa3f317a4f200979
+    modified: 1658142938006
+    created: 1658142938006
+    name: Example Test Suite
+    _type: unit_test_suite
