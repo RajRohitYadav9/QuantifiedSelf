@@ -2,8 +2,6 @@ Modern Application Developement I (MAD I)
 Final Project (Quantified Self Web Application)
 
 By Raj Rohit Yadav
-Roll No.: 21f1005377
-21f1005377@student.onlinedegree.iitm.ac.in
 
 
 Read_Me.txt
