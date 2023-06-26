@@ -17,10 +17,11 @@ Submission Structure:
 > error.py
 > Read_Me.txt
 > client.sqlite3
+> requirements.txt
 > templates
         >	Boolean.html
         >	Dashboard.html
-	  >	editBoolean.html
+	>	editBoolean.html
         >	editingShadow.html
         >	editMultiple Choice.html
         >	editNumerical.html
