@@ -11,8 +11,10 @@ Submission Structure:
 
 > static
 > app.py
-> validation.py
-> Project Report.pdf
+> api.py
+> models.py
+> controller.py
+> error.py
 > Read_Me.txt
 > client.sqlite3
 > templates
