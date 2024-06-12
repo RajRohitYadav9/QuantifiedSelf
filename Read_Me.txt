@@ -98,4 +98,4 @@ Description & Features:
 > On his Dashboard user can create a new tracker for him and also log new event for the same tracker.
 > On the tracker page users can see and analyze their tracker logs through trend lines.
 > All created trackers will be reflected on Dashboard.
-> Users can edit/delete any tracker or there logs with time as per needs.
+> Users can edit/delete any tracker or there logs with time as per there needs.
